@@ -8,9 +8,37 @@ import { useState } from "react"
 //map over array en creer div: naam, foto, prijs, button naar currency
 
 function Currencies() {
-    const [cart, setCart] = useState([])
-    const addToCart = (item) => {
-        setCart(current => [...current, item])
+    const [cart, setCart] = useState([
+        {
+            name: 'EURO',
+            price: 1.04,
+            amount: 0,
+        },
+        {
+            name: 'JPY',
+            price: 0.007,
+            amount: 0,
+        },
+        {
+            name: 'GBP',
+            price: 1.19,
+            amount: 0,
+        }
+    ])
+    const [cartActive, setCartActive] = useState(true)
+    const addToCart = (currency, amount) => {
+        setCart(cart.map((item) => {
+            if (item.name === currency) {
+                console.log([...item])
+                return {...item, amount: item.amount + parseInt(amount)}
+            } else {
+                return item
+            }
+        }))
+        console.log(cart)
+    }
+    const closeCart = () => {
+        setCartActive(false)
     }
     return <div className="currencies">
         <div className="currencyItems">
@@ -18,6 +46,7 @@ function Currencies() {
             <JPY addThis={addToCart} />
             <GBP addThis={addToCart}/>
         </div>
+        
     </div>
 }
 

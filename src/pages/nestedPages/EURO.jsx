@@ -1,16 +1,20 @@
+import { useState } from "react"
+
 function EURO({addThis}) {
+    const [euroAmount, setEuroAmount] = useState(0)
+    const handleChange = e => {
+        setEuroAmount(e.target.value)
+    }
     return <div className="currency">
         <img className="currencypageImg" src="/src/assets/euro.jpg" alt="" />
         <div className="rightside">
             <div className="currencyinfo">
                 <h3>Euro</h3>
-                <p>Description</p>
-                <p>prijs</p>
+                <p>1.04$</p>
             </div>
             <div className="buttons">
-                <button>-</button>
-                <button onClick={() => addThis('Euro')}>ADD to cart</button>
-                <button>+</button>
+                <input type="number" onChange={handleChange} name="euro" id="euro" className="currencyInput" />
+                <button onClick={() => addThis('EURO',euroAmount)}>Add to cart</button>
             </div>
         </div>
     </div>

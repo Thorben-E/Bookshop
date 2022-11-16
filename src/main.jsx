@@ -1,4 +1,4 @@
-import React, { Children } from 'react'
+import React, { Children, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ErrorPage from './pages/error-page';
@@ -7,10 +7,12 @@ import Home from './pages/Home';
 import Layout from './pages/Layout';
 import EURO from './pages/nestedPages/EURO';
 import JPY from './pages/nestedPages/JPY';
-import GBP from './pages/nestedPages/GBP'
+import GBP from './pages/nestedPages/GBP';
+import Cart from './pages/cart';
 import './style.css'
 
 export default function App() {
+  
   return (
     <BrowserRouter>
       <Routes>
@@ -20,6 +22,7 @@ export default function App() {
             <Route path='euro' element={<EURO />} />
             <Route path='jpy' element={<JPY />} />
             <Route path='gbp' element={<GBP />} />
+            <Route path='cart' element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

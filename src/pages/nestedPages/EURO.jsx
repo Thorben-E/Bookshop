@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-function EURO({addThis}) {
+function EURO({ addToCart }) {
     const [euroAmount, setEuroAmount] = useState(0)
     const handleChange = e => {
         setEuroAmount(e.target.value)
@@ -14,7 +14,7 @@ function EURO({addThis}) {
             </div>
             <div className="buttons">
                 <input type="number" onChange={handleChange} name="euro" id="euro" className="currencyInput" />
-                <button onClick={() => addThis('EURO',euroAmount)}>Add to cart</button>
+                <button onClick={addToCart('EURO',euroAmount)}>Add to cart</button>
             </div>
         </div>
     </div>

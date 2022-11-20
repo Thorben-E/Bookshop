@@ -1,8 +1,7 @@
 import { useState } from "react"
-function Cart({ changeCart }) {
-    
+function Cart({cart}) {
     return <>
-            {cartActive ? <div className="cart">
+            <div className="cart">
                 <h2>Your cart</h2>
                 {cart.map((item) => {
                     <cartItem name={item.name} price={item.price} amount={item} />
@@ -10,7 +9,7 @@ function Cart({ changeCart }) {
                 <p>Total: </p>
                 <button className="checkoutButton">Checkout</button>
                 <button className="closeButton" onClick={changeCart}>Close</button>
-            </div> : ''}
+            </div>
         </>
 }
 

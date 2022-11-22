@@ -1,46 +1,32 @@
 import {Outlet, Link} from "react-router-dom"
-import { useState } from "react";
+import { useContext } from "react";
+import { CartActiveContext } from "./CartContext";
 
 const Layout = () => {
-  const [cartActive, setCartActive] = useState(false)
-  const changeCart = () => {
-    console.log('hi')
-    if (cartActive === true) {
-      setCartActive(false)
-    } else {
-      setCartActive(true)
+  const { cartActive, cartDetails } = useContext(CartActiveContext)
+  const [cartActiveValue, setcartActiveValue] = cartActive;
+  const [cartDetailValue, setcartDetailValue] = cartDetails
+  function toggleCart() {
+    setcartDetailValue([
+    {
+        name: 'EURO',
+        price: 1.04,
+        amount: 0,
+    },
+    {
+        name: 'JPY',
+        price: 0.007,
+        amount: 0,
+    },
+    {
+        name: 'GBP',
+        price: 1.19,
+        amount: 0,
     }
-  }
-  const [cart, setCart] = useState([
-        {
-            name: 'EURO',
-            price: 1.04,
-            amount: 0,
-        },
-        {
-            name: 'JPY',
-            price: 0.007,
-            amount: 0,
-        },
-        {
-            name: 'GBP',
-            price: 1.19,
-            amount: 0,
-        }
   ])
-  const addToCart = (currency, amount) => {
-    setCart(cart.map((item) => {
-        if (item.name === currency) {
-            return {...item, amount: item.amount + parseInt(amount)}
-        } else {
-            console.log('no item')
-            return item
-        }
-    }))
-  }
-  const consoleCart = (cart) => {
-    console.log(cart)
-  }
+    setcartActiveValue(true)
+  };
+  
   return (
     <>
       <nav className="navbar">
@@ -50,10 +36,10 @@ const Layout = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/currencies" addToCart={addToCart} changeCart={changeCart} cartActive={cartActive}>Currencies</Link>
+            <Link to='/currencies' >Currencies</Link>
           </li>
           <li>
-            <a onClick={() => {consoleCart(cart)}}>Cart ({cart.length})</a>
+            <a onClick={toggleCart}>Cart (length of cart)</a>
           </li>
         </ul>
       </nav>

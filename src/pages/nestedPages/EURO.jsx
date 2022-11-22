@@ -14,7 +14,7 @@ function EURO({ addToCart }) {
             </div>
             <div className="buttons">
                 <input type="number" onChange={handleChange} name="euro" id="euro" className="currencyInput" />
-                <button onClick={addToCart('EURO',euroAmount)}>Add to cart</button>
+                <button onClick={() => {addToCart('EURO',euroAmount)}}>Add to cart</button>
             </div>
         </div>
     </div>

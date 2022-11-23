@@ -1,9 +1,16 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { CartContext } from "../CartContext"
 
-function EURO({ addToCart }) {
+function EURO() {
     const [euroAmount, setEuroAmount] = useState(0)
     const handleChange = e => {
         setEuroAmount(e.target.value)
+    }
+    const { cartDetails } = useContext(CartContext)
+    const [cartDetailValue, setcartDetailValue] = cartDetails
+    const addToCart = (currency, amount) => {
+        setcartDetailValue('setcart works')
+        console.log(cartDetailValue)
     }
     return <div className="currency">
         <img className="currencypageImg" src="/src/assets/euro.jpg" alt="" />

@@ -8,17 +8,33 @@ import EURO from './pages/nestedPages/EURO';
 import JPY from './pages/nestedPages/JPY';
 import GBP from './pages/nestedPages/GBP';
 import Cart from './pages/cart';
-import { CartActiveContext } from './pages/CartContext';
+import { CartContext } from './pages/CartContext';
 import { useState } from 'react';
 import './style.css'
 
 export default function App() {
   const [cartOpen, setCartOpen] = useState(false);
-  const [cart, setCart] = useState();
+  const [cart, setCart] = useState([
+    {
+        name: 'EURO',
+        price: 1.04,
+        amount: 0,
+    },
+    {
+        name: 'JPY',
+        price: 0.007,
+        amount: 0,
+    },
+    {
+        name: 'GBP',
+        price: 1.19,
+        amount: 0,
+    }
+  ]);
 
   return (
     <BrowserRouter>
-        <CartActiveContext.Provider 
+        <CartContext.Provider 
          value={{ cartActive: [cartOpen, setCartOpen], cartDetails: [cart, setCart] }}>
           <Routes>
             <Route path="/" element={<Layout />}>
@@ -31,7 +47,7 @@ export default function App() {
             <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
-        </CartActiveContext.Provider>
+        </CartContext.Provider>
     </BrowserRouter>
   );
 }

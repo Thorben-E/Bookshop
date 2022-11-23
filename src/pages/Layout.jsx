@@ -1,45 +1,41 @@
 import {Outlet, Link} from "react-router-dom"
-import { useContext } from "react";
-import { CartActiveContext } from "./CartContext";
+import { useContext, useState } from "react";
+import { CartContext } from "./CartContext";
 
 const Layout = () => {
-  const { cartActive, cartDetails } = useContext(CartActiveContext)
+  const { cartActive, cartDetails } = useContext(CartContext)
   const [cartActiveValue, setcartActiveValue] = cartActive;
   const [cartDetailValue, setcartDetailValue] = cartDetails
   function toggleCart() {
-    setcartDetailValue([
-    {
-        name: 'EURO',
-        price: 1.04,
-        amount: 0,
-    },
-    {
-        name: 'JPY',
-        price: 0.007,
-        amount: 0,
-    },
-    {
-        name: 'GBP',
-        price: 1.19,
-        amount: 0,
-    }
-  ])
     setcartActiveValue(true)
   };
+  
+  const [cartAmount, setcartAmount] = useState(0)
+
+  const calcCartAmount = () => {
+    const value = 0
+    cartDetailValue.forEach(element => {
+      if (element.amount > 0) {
+        value =+ 1
+      }
+    });
+    setcartAmount(value)
+  }
   
   return (
     <>
       <nav className="navbar">
         <h1>CurrencyShop</h1>
-        <ul>
+        <ul className="navlist">
           <li>
             <Link to="/">Home</Link>
           </li>
           <li>
             <Link to='/currencies' >Currencies</Link>
           </li>
+          <button onClick={calcCartAmount}>update cart amount</button>
           <li>
-            <a onClick={toggleCart}>Cart (length of cart)</a>
+            <a onClick={toggleCart}>Cart ({cartAmount})</a>
           </li>
         </ul>
       </nav>

@@ -1,4 +1,4 @@
-function cartItem(name, price, amount) {
+function CartItem(name, price, amount) {
     return <div className="item-information">
         <h3>{name}</h3>
         <p>{price}$</p>
@@ -6,4 +6,4 @@ function cartItem(name, price, amount) {
     </div>
 }
 
-export default cartItem
+export default CartItem

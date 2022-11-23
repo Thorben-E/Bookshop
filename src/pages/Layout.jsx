@@ -3,24 +3,13 @@ import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 
 const Layout = () => {
-  const { cartActive, cartDetails } = useContext(CartContext)
+  const { cartActive, cartDetails, total } = useContext(CartContext)
   const [cartActiveValue, setcartActiveValue] = cartActive;
   const [cartDetailValue, setcartDetailValue] = cartDetails
+  const [totalValue, setTotalValue] = total
   function toggleCart() {
     setcartActiveValue(true)
   };
-  
-  const [cartAmount, setcartAmount] = useState(0)
-
-  const calcCartAmount = () => {
-    const value = 0
-    cartDetailValue.forEach(element => {
-      if (element.amount > 0) {
-        value =+ 1
-      }
-    });
-    setcartAmount(value)
-  }
   
   return (
     <>
@@ -33,9 +22,8 @@ const Layout = () => {
           <li>
             <Link to='/currencies' >Currencies</Link>
           </li>
-          <button onClick={calcCartAmount}>update cart amount</button>
           <li>
-            <a onClick={toggleCart}>Cart ({cartAmount})</a>
+            <a onClick={toggleCart}>Cart ({totalValue})</a>
           </li>
         </ul>
       </nav>

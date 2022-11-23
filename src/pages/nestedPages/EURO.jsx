@@ -9,9 +9,15 @@ function EURO() {
     const { cartDetails } = useContext(CartContext)
     const [cartDetailValue, setcartDetailValue] = cartDetails
     const addToCart = (currency, amount) => {
-        setcartDetailValue('setcart works')
-        console.log(cartDetailValue)
+        setcartDetailValue(cartDetailValue.map(item => {
+            if (item.name === currency) {
+                return {...item, amount: item.amount + parseInt(amount)}
+            } else {
+                return item
+            }
+        }))
     }
+    
     return <div className="currency">
         <img className="currencypageImg" src="/src/assets/euro.jpg" alt="" />
         <div className="rightside">

@@ -1,8 +1,21 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { CartContext } from "../CartContext"
+
 function JPY({addThis}) {
     const [jpgAmount, setjpgAmount] = useState(0)
     const handleChange = e => {
         setjpgAmount(e.target.value)
+    }
+    const { cartDetails } = useContext(CartContext)
+    const [cartDetailValue, setcartDetailValue] = cartDetails
+    const addToCart = (currency, amount) => {
+        setcartDetailValue(cartDetailValue.map(item => {
+            if (item.name === currency) {
+                return {...item, amount: item.amount + parseInt(amount)}
+            } else {
+                return item
+            }
+        }))
     }
     return <div className="currency">
         <img className="currencypageImg" src="/src/assets/jpy.png" alt="" />
@@ -13,7 +26,7 @@ function JPY({addThis}) {
             </div>
             <div className="buttons">
                 <input type="number" onChange={handleChange} name="euro" id="euro" className="currencyInput" />
-                <button onClick={() => addThis('JPY',jpgAmount)}>Add to cart</button>
+                <button onClick={() => addToCart('JPY',jpgAmount)}>Add to cart</button>
             </div>
         </div>
     </div>

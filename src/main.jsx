@@ -31,11 +31,21 @@ export default function App() {
         amount: 0,
     }
   ]);
+  const calculateTotal = () => {
+    let total = 0
+    cart.forEach(item => {
+      console.log(item.price),
+      console.log(item.amount),
+      total = total + (item.price * item.amount)})
+    return total
+  }
+  const [total, setTotal] = useState(calculateTotal)
+  
 
   return (
     <BrowserRouter>
         <CartContext.Provider 
-         value={{ cartActive: [cartOpen, setCartOpen], cartDetails: [cart, setCart] }}>
+         value={{ cartActive: [cartOpen, setCartOpen], cartDetails: [cart, setCart], total: [total, setTotal] }}>
           <Routes>
             <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />

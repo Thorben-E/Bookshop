@@ -9,9 +9,32 @@ import { CartContext } from "./CartContext"
 //map over array en creer div: naam, foto, prijs, button naar currency
 
 function Currencies() {
-    const { cartActive, cartDetails } = useContext(CartContext)
+    const { cartActive, cartDetails, total } = useContext(CartContext)
     const [cartActiveValue, setcartActiveValue] = cartActive;
     const [cartDetailValue, setcartDetailValue] = cartDetails
+    const [totalValue, setTotalValue] = total
+    const increment = (item) => {
+        cartDetailValue.forEach(valuta => {
+            if (valuta.name === item.name) {
+                valuta.amount = valuta.amount + 1
+            }
+        })
+    }
+    const decrement = (item) => {
+        cartDetailValue.forEach(valuta => {
+            if (valuta.name === item.name) {
+                valuta.amount = valuta.amount - 1
+            }
+        })
+    }
+
+    const calculateTotal = () => {
+        let total = 0;
+        cartDetailValue.forEach(valuta => {
+        total = total + (valuta.amount * valuta.price)})
+        return total
+    }
+
     return <>
         <div className="currencies">
         <div className="currencyItems">
@@ -29,16 +52,16 @@ function Currencies() {
                             <h3>{item.name}</h3>
                             <p>{item.price}</p>
                             <div className="amount">
-                                <button>-</button>
+                                <button onClick={() => decrement(item)}>-</button>
                                 <p>{item.amount}</p>
-                                <button>+</button>
+                                <button onClick={() => increment(item)}>+</button>
                             </div>
                         </div>
                     </li>
                 ))}
             </ul>
-            <p>Total: </p>
-            <button className="checkoutButton" >Checkout</button>
+            <p>Total: {calculateTotal()}</p>
+            <button className="checkoutButton" onClick={() => alert('Here you would pay')}>Checkout</button>
             <button className="closeButton" onClick={() => setcartActiveValue(false)}>Close</button>
         </div>}
         

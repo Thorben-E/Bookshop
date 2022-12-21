@@ -1,5 +1,6 @@
 import { useState, useContext } from "react"
 import { CartContext } from "../CartContext"
+import jpy from './assets/jpy.png'
 
 function JPY({addThis}) {
     const [jpgAmount, setjpgAmount] = useState(0)
@@ -18,7 +19,7 @@ function JPY({addThis}) {
         }))
     }
     return <div className="currency">
-        <img className="currencypageImg" src="/src/assets/jpy.png" alt="" />
+        <img className="currencypageImg" src={jpy} alt="" />
         <div className="rightside">
             <div className="currencyinfo">
                 <h3>JPY</h3>

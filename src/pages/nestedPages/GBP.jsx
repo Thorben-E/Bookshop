@@ -1,5 +1,7 @@
 import { useState, useContext } from "react"
 import { CartContext } from "../CartContext"
+import gbp from './assets/gbp.png'
+
 function GBP() {
     const [gbpAmount, setgbpAmount] = useState(0)
     const handleChange = e => {
@@ -17,7 +19,7 @@ function GBP() {
         }))
     }
     return <div className="currency">
-        <img className="currencypageImg" src="/src/assets/gbp.png" alt="" />
+        <img className="currencypageImg" src={gbp} alt="" />
         <div className="rightside">
             <div className="currencyinfo">
                 <h3>GBP</h3>

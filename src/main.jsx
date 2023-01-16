@@ -13,51 +13,29 @@ import { useState } from 'react';
 import './style.css'
 
 export default function App() {
-  const [cartOpen, setCartOpen] = useState(false);
-  const [cart, setCart] = useState([
-    {
-        name: 'EURO',
-        price: 1.04,
-        amount: 0,
-    },
-    {
-        name: 'JPY',
-        price: 0.007,
-        amount: 0,
-    },
-    {
-        name: 'GBP',
-        price: 1.19,
-        amount: 0,
-    }
-  ]);
-  const calculateTotal = () => {
-    let total = 0
-    cart.forEach(item => {
-      console.log(item.price),
-      console.log(item.amount),
-      total = total + (item.price * item.amount)})
-    return total
+  const [cart, setCart] = useState([]);
+
+  const addItemToCart = (itemId) => {
+
   }
-  const [total, setTotal] = useState(calculateTotal)
-  
+
+  const removeItemFromCart = (itemId) => {
+
+  }
 
   return (
     <BrowserRouter>
-        <CartContext.Provider 
-         value={{ cartActive: [cartOpen, setCartOpen], cartDetails: [cart, setCart], total: [total, setTotal] }}>
-          <Routes>
-            <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="currencies" element={<Currencies />} />
-              <Route path='euro' element={<EURO />} />
-              <Route path='jpy' element={<JPY />} />
-              <Route path='gbp' element={<GBP />} />
-              <Route path='cart' element={<Cart />} />
-            <Route path="*" element={<ErrorPage />} />
-            </Route>
-          </Routes>
-        </CartContext.Provider>
+      <Routes>
+        <Route path="/" element={<Layout cartItems={cart.length} />}>
+        <Route index element={<Home />} />
+        <Route path="currencies" element={<Currencies />} />
+          <Route path='euro' element={<EURO />} />
+          <Route path='jpy' element={<JPY />} />
+          <Route path='gbp' element={<GBP />} />
+          <Route path='cart' element={<Cart />} />
+        <Route path="*" element={<ErrorPage />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 }

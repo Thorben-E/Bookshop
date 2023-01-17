@@ -30,7 +30,7 @@ function Cart({ cart, addItemToCart, removeItemFromCart }) {
                 total: {cart.reduce((total, item) => {
                 return total + item.price * item.amount;
                 }, 0)
-                .toFixed(3)}
+                .toFixed(2)}
             </p>
             <button className="checkout-btn" onClick={() => alert('You would pay here')}>Checkout</button>
         </> : <h2>No Items in cart</h2>}

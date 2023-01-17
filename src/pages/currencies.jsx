@@ -5,13 +5,13 @@ import { useContext } from "react"
 import CartItem from "./cartItem"
 import { CartContext } from "./CartContext"
 
-function Currencies() {
+function Currencies({ cart, addItemToCart,removeItemFromCart }) {
 
     return <>
         <div className="currencies">
-            <EURO />
-            <JPY />
-            <GBP />
+            <EURO addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />
+            <JPY addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />
+            <GBP addItemToCart={addItemToCart} removeItemFromCart={removeItemFromCart} />
         </div>
     </>
 }

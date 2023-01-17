@@ -15,12 +15,25 @@ import './style.css'
 export default function App() {
   const [cart, setCart] = useState([]);
 
-  const addItemToCart = (itemId) => {
-
+  const addItemToCart = (item) => {
+    const itemindex = cart.findIndex((i) => i.name === item.name);
+    if (itemindex > -1) {
+      const newCart = cart.slice();
+      newCart[itemindex].amount++;
+      setCart(newCart);
+    } else {
+      setCart([...cart, item]);
+    }
   }
 
-  const removeItemFromCart = (itemId) => {
-
+  const removeItemFromCart = (item, removeAll) => {
+    const itemindex = cart.findIndex((i) => i.name === item.name);
+    if (itemindex > -1) {
+      const newCart = cart.slice();
+      if (newCart[itemindex].amount <= 1) removeAll = true
+      removeAll ? newCart.splice(itemindex, 1) : newCart[itemindex].amount--; 
+      setCart(newCart);
+    }  
   }
 
   return (
@@ -28,11 +41,14 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout cartItems={cart.length} />}>
         <Route index element={<Home />} />
-        <Route path="currencies" element={<Currencies />} />
-          <Route path='euro' element={<EURO />} />
-          <Route path='jpy' element={<JPY />} />
-          <Route path='gbp' element={<GBP />} />
-          <Route path='cart' element={<Cart />} />
+        <Route path="currencies" element={<Currencies 
+          cart={cart}
+          addItemToCart={addItemToCart}
+          removeItemFromCart={removeItemFromCart} />} />
+        <Route path='cart' element={<Cart 
+          cart={cart}
+          addItemToCart={addItemToCart}
+          removeItemFromCart={removeItemFromCart} />} />
         <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

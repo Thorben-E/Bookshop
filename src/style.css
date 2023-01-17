@@ -5,11 +5,12 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+
+
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    min-height: 10vh;
     padding: 0 20px;
     background-color: black;
     color: white;
@@ -18,6 +19,11 @@ nav {
 a {
     color: black;
     text-decoration: none;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
 }
 
 nav ul {
@@ -34,7 +40,7 @@ nav ul a {
 .toggle-button {
     display: none;
     position: absolute;
-    top: .75rem;
+    top: 1.5rem;
     right: 1rem;
     flex-direction: column;
     justify-content: space-between;
@@ -59,8 +65,10 @@ nav ul a {
 }
 
 .homeButton {
-    background-color: #FCD535;
-    padding: 10px;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
 }
 
 .currencies {
@@ -81,13 +89,77 @@ nav ul a {
 }
 
 .currency {
-    border: 1px #FCD535 solid;
+    border: 1px black solid;
+    border-radius: 10px;
     padding: 20px;
 }
 
 .currencypageImg {
     width: 100px;
     height: 100px;
+} 
+
+.currency-btn {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 10px;
+}
+
+.cart {
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.items {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.cartPlusAndMinus {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border-radius: 50%;
+    border: none;
+}
+
+.amountInput {
+    margin: 0 10px;
+    width: 50px;
+}
+
+.removeItem {
+    padding: 5px 10px;
+}
+
+.removeItem:hover {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+}
+
+.checkout-btn {
+    background-color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
 }
 
 @media only screen and (max-width: 500px) {
@@ -101,7 +173,7 @@ nav ul a {
     }
 
     .navlist {
-        /* display: none; */
+        display: none;
     }
 
     nav {
@@ -110,7 +182,12 @@ nav ul a {
     }
 
     nav ul {
-        width: 100%;
+        width: 100vw;
+        margin-bottom: 20px;
         flex-direction: column;
+    }
+
+    nav ul li {
+        text-align: center;
     }
 }

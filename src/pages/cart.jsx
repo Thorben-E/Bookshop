@@ -13,6 +13,7 @@ function Cart({ cart, addItemToCart, removeItemFromCart }) {
             <div className="items">
                 {cart.map((item) => {
                     return <div key={item.name} className="item">
+                    <img src={item.img} className="currencypageImg" alt="" />
                     <h3>{item.name}</h3>
                     <p>$ {item.price}</p>
                     <div className="amount">

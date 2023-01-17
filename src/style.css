@@ -89,6 +89,7 @@ nav ul a {
 }
 
 .currency {
+    height: 300px;
     border: 1px black solid;
     border-radius: 10px;
     padding: 20px;
@@ -96,7 +97,6 @@ nav ul a {
 
 .currencypageImg {
     width: 100px;
-    height: 100px;
 } 
 
 .currency-btn {

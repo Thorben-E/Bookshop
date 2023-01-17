@@ -9,7 +9,7 @@ const Layout = ({cartItems}) => {
   return (
     <>
       <nav>
-        <h1>CurrencyShop</h1>
+        <h1>BookShop</h1>
         
         {screen.width < 500 ? <a href="#" className="toggle-button" id="toggle-button" onClick={() => setDropdown((prev) => !prev)}>
           <span className="bar"></span>
@@ -21,7 +21,7 @@ const Layout = ({cartItems}) => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/currencies' >Currencies</Link>
+              <Link to='/currencies' >Books</Link>
             </li>
             <li>
               <Link to='/cart'>Cart ({cartItems})</Link>
@@ -34,7 +34,7 @@ const Layout = ({cartItems}) => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to='/currencies' >Currencies</Link>
+              <Link to='/currencies' >Books</Link>
             </li>
             <li>
               <Link to='/cart'>Cart ({cartItems})</Link>

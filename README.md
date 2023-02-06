@@ -1,4 +1,4 @@
-# CurrencyShop
+# BookShop
 > A simple responsive online bookstore
 
 ### It allows a user to:
